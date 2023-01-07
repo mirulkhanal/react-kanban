@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+.KanbanBoard {
+  height: calc(100vh - 4rem);
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  margin: 2rem;
+}
+
+.TaskList {
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.25rem;
+}
+
+.Task {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e2e8f0;
+  border-radius: 0.25rem;
+}
+
+.AddTaskList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 20rem;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.25rem;
+}
+
+.AddTaskList input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f7fafc;
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+}
+
+.AddTaskList button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #0079bf;
+  border: none;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.AddTaskList button:hover,
+.AddTaskList button:focus {
+  background-color: #006699;
+}
+
+.AddTask {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f7fafc;
+  border-radius: 0.25rem;
+}
+
+.AddTask input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f7fafc;
+  border: 1px solid #d1d5da;
+  border-radius: 0.25rem;
+}
+
+.AddTask button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #0079bf;
+  border: none;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.AddTask button:hover,
+.AddTask button:focus {
+  background-color: #006699;
+}
+
+@media (max-width: 640px) {
+  .KanbanBoard {
+    height: calc(100vh - 2rem);
+    margin: 1rem;
+  }
+  .TaskList {
+    width: 100%;
+  }
+  .AddTaskList {
+    width: 100%;
+  }
+}
