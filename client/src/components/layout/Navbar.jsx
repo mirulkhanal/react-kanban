@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { IoLogoXing } from 'react-icons/io5';
 import UserProfile from './UserProfile';
+import { useEffect } from 'react';
+import { getUser } from '../../store/slices/authSlice';
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const pathname =
     typeof location.pathname === 'string' ? location.pathname : '';
@@ -17,8 +20,8 @@ const Navbar = () => {
   }
   return (
     <>
-      <nav className='bg-primary py-4 px-4 flex justify-between items-center sm:flex-row flex-col '>
-        <div className='flex-shrink-0 bg-primary-dark p-2'>
+      <nav className='bg-test-dark-matte py-4 px-4 flex justify-between items-center sm:flex-row flex-col '>
+        <div className='flex-shrink-0 bg-primary-dark_sub p-2'>
           <IoLogoXing className='text-4xl p-0 m-0 text-white ' />
         </div>
         <div className='hidden sm:block sm:ml-6'>
@@ -26,7 +29,7 @@ const Navbar = () => {
         </div>
         <div className='flex sm:hidden'>
           <button
-            className='px-3 py-2 rounded-lg text-white hover:bg-blue-600'
+            className='px-3 py-2 rounded-lg text-white hover:bg-primary-dark_sub'
             onClick={() => setOpen(!open)}>
             <svg className='h-6 w-6 fill-current' viewBox='0 0 24 24'>
               <path
@@ -41,7 +44,7 @@ const Navbar = () => {
         </div>
         <div className='hidden sm:flex sm:items-center sm:gap-4'>
           <Link
-            className='px-3 py-2 rounded-lg text-white hover:bg-primary-dark'
+            className='px-3 py-2 rounded-lg text-white hover:bg-primary-dark_sub transition duration-700 ease-in-out'
             to='/'>
             Home
           </Link>
@@ -51,7 +54,7 @@ const Navbar = () => {
             <UserProfile />
           ) : (
             <Link
-              className='px-3 py-2 rounded-lg text-white hover:bg-blue-600'
+              className='px-3 py-2 rounded-lg text-white hover:primary-dark_sub'
               to='/login'>
               Login
             </Link>

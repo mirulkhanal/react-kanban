@@ -18,16 +18,21 @@ router.get(
 
 router.get('/user', (req, res) => {
   if (req.user) {
-    req.session.user = req.user;
-    res.send(req.user);
-  } else {
-    res.send(null);
+    // req.session.user = req.user;
+    return res.send(req.user);
   }
+  return res.send(false);
 });
 
 router.get('/logout', (req, res) => {
-  req.logOut();
-  res.redirect(`${CLIENT_URL}/login`);
+  console.log('USER BEFORE LOGOUT', req.user);
+  req.logout((err) => {
+    if (err) {
+      console.log('LOGOUT ERROR', err);
+    }
+  });
+  console.log('USER AFTER LOGOUT', req.user);
+  return res.send({ success: true, message: 'Successfully logged out' });
 });
 
 module.exports = router;

@@ -3,11 +3,7 @@
 @tailwind components;
 
 .KanbanBoard {
-  height: calc(100vh - 4rem);
-  width: 100%;
-  display: flex;
-  overflow-x: scroll;
-  margin: 2rem;
+  height: calc(100vh - 7.4rem);
 }
 
 .TaskList {
@@ -98,17 +94,4 @@
 .AddTask button:hover,
 .AddTask button:focus {
   background-color: #006699;
-}
-
-@media (max-width: 640px) {
-  .KanbanBoard {
-    height: calc(100vh - 2rem);
-    margin: 1rem;
-  }
-  .TaskList {
-    width: 100%;
-  }
-  .AddTaskList {
-    width: 100%;
-  }
 }

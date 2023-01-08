@@ -24,7 +24,7 @@ function KanbanBoard(props) {
     setTaskLists([...taskLists]);
   };
   return (
-    <div className='KanbanBoard'>
+    <div className='KanbanBoard flex gap-4 overflow-scroll p-4'>
       {taskLists.map((taskList) => (
         <TaskList
           key={taskList.id}
@@ -36,15 +36,24 @@ function KanbanBoard(props) {
           setTaskLists={setTaskLists}
         />
       ))}
-      <div className='AddTaskList'>
-        <h2 className='text-xl font-bold mb-2'>Add a Task List</h2>
-        <input
-          type='text'
-          value={newTaskListTitle}
-          onChange={(e) => setNewTaskListTitle(e.target.value)}
-          placeholder='Enter task list title...'
-        />
-        <button onClick={addTaskList}>Add Task List</button>
+      <div className='flex flex-col bg-white shadow-lg rounded-lg h-fit min-w-max'>
+        <div className=' bg-primary-dark-main p-3 rounded-t-lg'>
+          <h2 className='text-xl font-bold text-white'>Add Another List</h2>
+        </div>
+        <div className='p-2 flex gap-3'>
+          <input
+            type='text'
+            value={newTaskListTitle}
+            className='border rounded-md px-3 py-2'
+            onChange={(e) => setNewTaskListTitle(e.target.value)}
+            placeholder='Enter list title...'
+          />
+          <button
+            onClick={addTaskList}
+            className='mt-2 bg-primary-dark-main rounded-md px-3 py-2 text-white font-bold hover:bg-primary-dark_sub'>
+            Add List
+          </button>
+        </div>
       </div>
     </div>
   );

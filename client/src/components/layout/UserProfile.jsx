@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { logout } from '../../store/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { getUser, logout } from '../../store/slices/authSlice';
 
 const UserProfile = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
-  const location = useLocation();
-  const pathname =
-    typeof location.pathname === 'string' ? location.pathname : '';
-  const isLoginRoute = pathname.match(/^\/login$/);
-
-  if (isLoginRoute) {
-    return null;
-  }
+  const dispatch = useDispatch();
 
   return (
-    <div className='relative hover:bg-primary-dark text-white p-2 rounded-lg transition duration-700 ease-in-out'>
+    <div className='relative hover:bg-primary-dark_sub text-white p-2 rounded-lg transition duration-700 ease-in-out'>
       <button
         className='flex items-center text-sm leading-5 font-medium  transition duration-150 ease-in-out'
         onClick={() => setMenuOpen(!isMenuOpen)}>
@@ -38,7 +31,9 @@ const UserProfile = () => {
           </div>
           <div className='py-1 rounded-md bg-white shadow-xs'>
             <button
-              //   onClick={logout}
+              onClick={() => {
+                dispatch(logout());
+              }}
               className='block  w-full px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out'>
               Logout
             </button>

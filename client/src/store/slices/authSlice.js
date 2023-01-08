@@ -24,11 +24,30 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    logoutStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    logoutSuccess(state) {
+      state.user = null;
+      state.loading = false;
+      state.error = null;
+    },
+    logoutFailure(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
-export const { getUserStart, getUserSuccess, getUserFailure } =
-  authSlice.actions;
+export const {
+  getUserStart,
+  getUserSuccess,
+  getUserFailure,
+  logoutStart,
+  logoutSuccess,
+  logoutFailure,
+} = authSlice.actions;
 
 export const getUser = () => async (dispatch) => {
   try {
@@ -39,6 +58,18 @@ export const getUser = () => async (dispatch) => {
     dispatch(getUserSuccess(res.data));
   } catch (error) {
     dispatch(getUserFailure(error.message));
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  try {
+    dispatch(logoutStart());
+    await axios.get('http://localhost:3000/auth/logout', {
+      withCredentials: true,
+    });
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutFailure(error.message));
   }
 };
 

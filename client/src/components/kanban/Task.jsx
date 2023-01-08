@@ -11,9 +11,9 @@ const Task = (props) => {
 
   return (
     <div
+      className='flex bg-white rounded-md shadow-md p-3 cursor-move'
       ref={drag}
       style={{ opacity: isDragging ? 0.5 : 1 }}
-      className='Task'
       onDrop={props.onMoveTask}>
       {props.text}
     </div>
